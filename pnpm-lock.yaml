@@ -32,6 +32,9 @@ importers:
       postgres:
         specifier: ^3.4.4
         version: 3.4.4
+      svelte-french-toast:
+        specifier: ^1.2.0
+        version: 1.2.0(svelte@4.2.17)
       sveltekit-superforms:
         specifier: ^2.13.1
         version: 2.13.1(@sveltejs/kit@2.5.10(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.17)(vite@5.2.11(@types/node@20.12.12)))(svelte@4.2.17)(vite@5.2.11(@types/node@20.12.12)))(@types/json-schema@7.0.15)(esbuild-runner@2.2.2(esbuild@0.19.12))(esbuild@0.19.12)(svelte@4.2.17)
@@ -2140,6 +2143,11 @@ packages:
       svelte:
         optional: true
 
+  svelte-french-toast@1.2.0:
+    resolution: {integrity: sha512-5PW+6RFX3xQPbR44CngYAP1Sd9oCq9P2FOox4FZffzJuZI2mHOB7q5gJBVnOiLF5y3moVGZ7u2bYt7+yPAgcEQ==}
+    peerDependencies:
+      svelte: ^3.57.0 || ^4.0.0
+
   svelte-hmr@0.16.0:
     resolution: {integrity: sha512-Gyc7cOS3VJzLlfj7wKS0ZnzDVdv3Pn2IuVeJPk9m2skfhcu5bq3wtIZyQGggr7/Iim5rH5cncyQft/kRLupcnA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -2182,6 +2190,11 @@ packages:
         optional: true
       typescript:
         optional: true
+
+  svelte-writable-derived@3.1.1:
+    resolution: {integrity: sha512-w4LR6/bYZEuCs7SGr+M54oipk/UQKtiMadyOhW0PTwAtJ/Ai12QS77sLngEcfBx2q4H8ZBQucc9ktSA5sUGZWw==}
+    peerDependencies:
+      svelte: ^3.2.1 || ^4.0.0-next.1 || ^5.0.0-next.94
 
   svelte@4.2.17:
     resolution: {integrity: sha512-N7m1YnoXtRf5wya5Gyx3TWuTddI4nAyayyIWFojiWV5IayDYNV5i2mRp/7qNGol4DtxEYxljmrbgp1HM6hUbmQ==}
@@ -4265,6 +4278,11 @@ snapshots:
     optionalDependencies:
       svelte: 4.2.17
 
+  svelte-french-toast@1.2.0(svelte@4.2.17):
+    dependencies:
+      svelte: 4.2.17
+      svelte-writable-derived: 3.1.1(svelte@4.2.17)
+
   svelte-hmr@0.16.0(svelte@4.2.17):
     dependencies:
       svelte: 4.2.17
@@ -4281,6 +4299,10 @@ snapshots:
       postcss: 8.4.38
       postcss-load-config: 3.1.4(postcss@8.4.38)
       typescript: 5.4.5
+
+  svelte-writable-derived@3.1.1(svelte@4.2.17):
+    dependencies:
+      svelte: 4.2.17
 
   svelte@4.2.17:
     dependencies:
