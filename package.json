@@ -46,6 +46,7 @@
 		"drizzle-zod": "^0.5.1",
 		"oslo": "^1.2.0",
 		"pg": "^8.11.5",
-		"postgres": "^3.4.4"
+		"postgres": "^3.4.4",
+		"sveltekit-superforms": "^2.13.1"
 	}
 }
