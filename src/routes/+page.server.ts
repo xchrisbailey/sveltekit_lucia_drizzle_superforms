@@ -3,7 +3,7 @@ import { type Actions, redirect } from '@sveltejs/kit';
 import { fail } from 'sveltekit-superforms';
 
 export const actions: Actions = {
-	default: async ({ cookies, locals }) => {
+	logout: async ({ cookies, locals }) => {
 		if (!locals.session) {
 			return fail(401);
 		}

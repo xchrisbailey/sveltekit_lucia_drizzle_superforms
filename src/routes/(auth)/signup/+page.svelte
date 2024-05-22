@@ -11,10 +11,10 @@
 		constraints,
 		enhance
 	} = superForm(data.form, {
-		async onUpdated({ form }) {
-			console.log(form);
-			if (form.valid) {
-				toast.success(`${form.data.email} Sign Up Successful`);
+		applyAction: false,
+		async onResult({ result }) {
+			if (result.type === 'success') {
+				toast.success(`${result.data?.email} Signed Up Successful`);
 				await goto('/');
 			}
 		}
