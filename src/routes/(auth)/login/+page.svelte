@@ -1,19 +1,22 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import toast from 'svelte-french-toast';
+	import toast, { Toaster } from 'svelte-french-toast';
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms';
 
 	export let data: PageData;
+
 	const { form, constraints, enhance } = superForm(data.form, {
 		async onUpdated({ form }) {
 			if (form.valid) {
-				toast('Logged In!');
+				toast.success('Logged In!');
 				await goto('/');
 			}
 		}
 	});
 </script>
+
+<Toaster />
 
 <form method="POST" use:enhance>
 	<label for="email">Email:</label>

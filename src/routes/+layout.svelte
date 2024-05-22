@@ -1,7 +1,3 @@
-<script>
-	import { Toaster } from 'svelte-french-toast';
-</script>
-
-<Toaster />
+<form method="POST"><button>Logout</button></form>
 
 <slot />

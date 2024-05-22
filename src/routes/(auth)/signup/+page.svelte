@@ -12,6 +12,7 @@
 		enhance
 	} = superForm(data.form, {
 		async onUpdated({ form }) {
+			console.log(form);
 			if (form.valid) {
 				toast.success(`${form.data.email} Sign Up Successful`);
 				await goto('/');

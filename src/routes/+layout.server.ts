@@ -1,9 +1,9 @@
-import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
 import { lucia } from '$lib/server/auth';
+import { type Actions, redirect } from '@sveltejs/kit';
+import { fail } from 'sveltekit-superforms';
 
 export const actions: Actions = {
-	logout: async ({ cookies, locals }) => {
+	default: async ({ cookies, locals }) => {
 		if (!locals.session) {
 			return fail(401);
 		}

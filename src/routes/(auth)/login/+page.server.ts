@@ -15,7 +15,7 @@ const schema = z.object({
 });
 
 export const load: PageServerLoad = async ({ locals }) => {
-	if (locals.user?.id) {
+	if (locals.user) {
 		return redirect(302, '/');
 	}
 
@@ -51,6 +51,8 @@ export const actions: Actions = {
 			...session_cookie.attributes
 		});
 
-		return redirect(302, '/');
+		return {
+			form
+		};
 	}
 };
