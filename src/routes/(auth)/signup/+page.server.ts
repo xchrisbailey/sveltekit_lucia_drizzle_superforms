@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
-import { fail, superValidate } from 'sveltekit-superforms';
+import { fail, message, setError, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { generateIdFromEntropySize } from 'lucia';
 import { Argon2id } from 'oslo/password';
@@ -30,22 +30,33 @@ export const actions: Actions = {
 			return fail(400, { form });
 		}
 
-		const user_id = generateIdFromEntropySize(10);
-		const hashed_password = await new Argon2id().hash(form.data.password);
+		try {
+			const user_id = generateIdFromEntropySize(10);
+			const hashed_password = await new Argon2id().hash(form.data.password);
 
-		await db.insert(users).values({
-			id: user_id,
-			email: form.data.email,
-			password: hashed_password
-		});
+			await db.insert(users).values({
+				id: user_id,
+				email: form.data.email,
+				password: hashed_password
+			});
 
-		const session = await lucia.createSession(user_id, {});
-		const sessionCookie = lucia.createSessionCookie(session.id);
-		cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: '.',
-			...sessionCookie.attributes
-		});
+			const session = await lucia.createSession(user_id, {});
+			const sessionCookie = lucia.createSessionCookie(session.id);
+			cookies.set(sessionCookie.name, sessionCookie.value, {
+				path: '.',
+				...sessionCookie.attributes
+			});
+		} catch (err) {
+			if (err instanceof Error) {
+				return message(form, err.message);
+			} else {
+				return setError(form, 'something went wrong!');
+			}
+		}
 
-		return redirect(302, '/');
+		return {
+			form,
+			sign_up_success: true
+		};
 	}
 };
