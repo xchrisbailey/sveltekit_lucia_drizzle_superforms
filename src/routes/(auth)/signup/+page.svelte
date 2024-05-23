@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
-	import type { PageData } from './$types';
 	import { toast } from 'svelte-french-toast';
 	import { goto } from '$app/navigation';
 
-	export let data: PageData;
+	let { data } = $props();
 
 	const {
 		form: signUpForm,

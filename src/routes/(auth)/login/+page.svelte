@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import toast from 'svelte-french-toast';
-	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms';
 
-	export let data: PageData;
+	let { data } = $props();
 
 	const { form, constraints, enhance } = superForm(data.form, {
 		applyAction: false,
